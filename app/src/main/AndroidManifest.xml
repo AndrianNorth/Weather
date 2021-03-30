@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Weather">
         <activity
             android:name=".view.MainActivity"
-            android:theme="@style/Theme.Weather.ActionBar.Transparent">
+            android:theme="@style/Theme.Weather.ActionBar.Transparent"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

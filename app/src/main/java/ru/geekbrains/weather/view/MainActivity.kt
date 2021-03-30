@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO) //Добавил для себя, чтобы не выключать НР на телефоне
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, MainFragment())
                 .commitNow()
         }
     }
