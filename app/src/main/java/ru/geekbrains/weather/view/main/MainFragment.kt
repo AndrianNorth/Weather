@@ -1,4 +1,4 @@
-package ru.geekbrains.weather.view
+package ru.geekbrains.weather.view.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,18 +26,20 @@ class MainFragment : Fragment() {
 
     private var isDataSetRus: Boolean = true
 
-    private val adapter = MainFragmentAdapter(object : OnItemViewClickListener {
-        override fun onItemViewClick(weather: Weather) {
-            activity?.supportFragmentManager?.apply {
-                beginTransaction()
-                    .replace(R.id.container, DetailsFragment.newInstance(Bundle().apply {
-                        putParcelable(DetailsFragment.BUNDLE_EXTRA, weather)
-                    }))
-                    .addToBackStack("")
-                    .commit()
+    private val adapter =
+        MainFragmentAdapter(object :
+            OnItemViewClickListener {
+            override fun onItemViewClick(weather: Weather) {
+                activity?.supportFragmentManager?.apply {
+                    beginTransaction()
+                        .replace(R.id.container, DetailsFragment.newInstance(Bundle().apply {
+                            putParcelable(DetailsFragment.BUNDLE_EXTRA, weather)
+                        }))
+                        .addToBackStack("")
+                        .commit()
+                }
             }
-        }
-    })
+        })
 
     override fun onCreateView(
         inflater: LayoutInflater,

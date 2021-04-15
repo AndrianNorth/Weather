@@ -9,3 +9,4 @@ data class FactDTO(
     val feels_like: Int?,
     val condition: String?
 )
+

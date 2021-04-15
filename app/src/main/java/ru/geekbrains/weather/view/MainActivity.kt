@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import ru.geekbrains.weather.R
+import ru.geekbrains.weather.view.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +20,9 @@ class MainActivity : AppCompatActivity() {
         registerReceiver(receiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment())
+                .replace(R.id.container,
+                    MainFragment()
+                )
                 .commitAllowingStateLoss()
         }
 
