@@ -14,3 +14,5 @@
 .cxx
 local.properties
 /.idea/
+/apikey.properties
+/app/proguard-rules.pro
