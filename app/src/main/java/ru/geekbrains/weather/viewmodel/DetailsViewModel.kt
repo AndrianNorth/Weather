@@ -2,7 +2,6 @@ package ru.geekbrains.weather.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -11,7 +10,6 @@ import ru.geekbrains.weather.repository.DetailsRepository
 import ru.geekbrains.weather.repository.DetailsRepositoryImpl
 import ru.geekbrains.weather.repository.RemoteDataSource
 import ru.geekbrains.weather.utils.convertDtoToModel
-import java.io.IOException
 
 private const val SERVER_ERROR = "ОШИБКА СЕРВЕРА"
 private const val REQUEST_ERROR = "ОШИБКА ЗАПРОСА НА СЕРВЕР"

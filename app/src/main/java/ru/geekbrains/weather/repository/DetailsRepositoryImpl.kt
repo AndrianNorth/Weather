@@ -12,6 +12,4 @@ class DetailsRepositoryImpl(private val remoteDataSource: RemoteDataSource) :
     ) {
         remoteDataSource.getWeatherDetails(lat, lon, callback)
     }
-
-
 }

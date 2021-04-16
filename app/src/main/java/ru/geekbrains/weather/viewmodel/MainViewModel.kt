@@ -6,7 +6,6 @@ import ru.geekbrains.weather.repository.MainRepository
 import ru.geekbrains.weather.repository.MainRepositoryImpl
 import java.lang.Thread.sleep
 
-
 class MainViewModel(
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
     private val mainRepositoryImpl: MainRepository = MainRepositoryImpl()
@@ -17,8 +16,6 @@ class MainViewModel(
     fun getWeatherFromLocalSourceRus() = getDataFromLocalSource(isRussian = true)
 
     fun getWeatherFromLocalSourceWorld() = getDataFromLocalSource(isRussian = false)
-
-    fun getWeatherFromRemoteSource() = getDataFromLocalSource(isRussian = true)
 
     private fun getDataFromLocalSource(isRussian: Boolean) {
         liveDataToObserve.value = AppState.Loading

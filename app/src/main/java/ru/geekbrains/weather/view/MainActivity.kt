@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
                 )
                 .commitAllowingStateLoss()
         }
-
     }
 
     override fun onDestroy() {
