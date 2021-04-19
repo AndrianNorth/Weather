@@ -104,5 +104,7 @@ class DetailsFragment : Fragment() {
             return fragment
         }
     }
+
+    // неуспеваю доделать ДЗ, пушну завтра
 }
 
