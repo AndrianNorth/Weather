@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso
 import ru.geekbrains.weather.viewmodel.DetailsViewModel
 import ru.geekbrains.weather.R
 import ru.geekbrains.weather.databinding.FragmentDetailsBinding
+import ru.geekbrains.weather.model.City
 import ru.geekbrains.weather.model.Weather
 import ru.geekbrains.weather.utils.showSnackBar
 import ru.geekbrains.weather.viewmodel.AppState
@@ -46,16 +47,16 @@ class DetailsFragment : Fragment() {
         when (appState) {
             is AppState.Success -> {
                 binding.mainView.visibility = View.VISIBLE
-                binding.loadingLayout.visibility = View.GONE
+                binding.DetailsLoadingLayout.loadingLayout.visibility = View.GONE
                 setWeather(appState.weatherData[0])
             }
             is AppState.Loading -> {
                 binding.mainView.visibility = View.GONE
-                binding.loadingLayout.visibility = View.VISIBLE
+                binding.DetailsLoadingLayout.loadingLayout.visibility = View.VISIBLE
             }
             is AppState.Error -> {
                 binding.mainView.visibility = View.VISIBLE
-                binding.loadingLayout.visibility = View.GONE
+                binding.DetailsLoadingLayout.loadingLayout.visibility = View.GONE
                 binding.mainView.showSnackBar(
                     getString(R.string.error),
                     getString(R.string.reload),
@@ -73,6 +74,7 @@ class DetailsFragment : Fragment() {
     private fun setWeather(weather: Weather) {
         with(binding){
             val city = weatherBundle.city
+            saveCity(city, weather)
             cityName.text = city.city
             cityCoordinates.text = String.format(
                 getString(R.string.city_coordinates),
@@ -90,6 +92,20 @@ class DetailsFragment : Fragment() {
         }
     }
 
+    private fun saveCity(
+        city: City,
+        weather: Weather
+    ) {
+        viewModel.saveCityToDB(
+            Weather(
+                city,
+                weather.temperature,
+                weather.feelsLike,
+                weather.condition
+            )
+        )
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -104,7 +120,5 @@ class DetailsFragment : Fragment() {
             return fragment
         }
     }
-
-    // неуспеваю доделать ДЗ, пушну завтра
 }
 
