@@ -20,7 +20,7 @@ class MainViewModel(
     private fun getDataFromLocalSource(isRussian: Boolean) {
         liveDataToObserve.value = AppState.Loading
         Thread {
-            sleep(1000)
+            sleep(2000)
             liveDataToObserve.postValue(
                 AppState.Success(
                     if (isRussian)
