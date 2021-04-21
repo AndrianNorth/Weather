@@ -2,25 +2,20 @@ package ru.geekbrains.weather.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import ru.geekbrains.weather.viewmodel.AppState
-import ru.geekbrains.weather.model.Repository
-import ru.geekbrains.weather.model.RepositoryImpl
+import ru.geekbrains.weather.repository.MainRepository
+import ru.geekbrains.weather.repository.MainRepositoryImpl
 import java.lang.Thread.sleep
-
 
 class MainViewModel(
     private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData(),
-    private val repositoryImpl: Repository = RepositoryImpl()
-) :
-    ViewModel() {
+    private val mainRepositoryImpl: MainRepository = MainRepositoryImpl()
+) : ViewModel() {
 
     fun getLiveData() = liveDataToObserve
 
     fun getWeatherFromLocalSourceRus() = getDataFromLocalSource(isRussian = true)
 
     fun getWeatherFromLocalSourceWorld() = getDataFromLocalSource(isRussian = false)
-
-    fun getWeatherFromRemoteSource() = getDataFromLocalSource(isRussian = true)
 
     private fun getDataFromLocalSource(isRussian: Boolean) {
         liveDataToObserve.value = AppState.Loading
@@ -29,9 +24,9 @@ class MainViewModel(
             liveDataToObserve.postValue(
                 AppState.Success(
                     if (isRussian)
-                        repositoryImpl.getWeatherFromLocalStorageRus()
+                        mainRepositoryImpl.getWeatherFromLocalStorageRus()
                     else
-                        repositoryImpl.getWeatherFromLocalStorageWorld()
+                        mainRepositoryImpl.getWeatherFromLocalStorageWorld()
                 )
             )
         }.start()
