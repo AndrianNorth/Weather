@@ -18,7 +18,9 @@ class HistoryFragment : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: HistoryViewModel by lazy { ViewModelProvider(this).get(HistoryViewModel::class.java) }
+    private val viewModel: HistoryViewModel by lazy {
+        ViewModelProvider(this).get(HistoryViewModel::class.java)
+    }
     private val adapter: HistoryAdapter by lazy { HistoryAdapter() }
 
     override fun onCreateView(
