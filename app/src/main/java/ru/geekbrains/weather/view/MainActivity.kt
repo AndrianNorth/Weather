@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import ru.geekbrains.weather.R
 import ru.geekbrains.weather.view.history.HistoryFragment
 import ru.geekbrains.weather.view.main.MainFragment
+import ru.geekbrains.weather.view.googlemaps.GoogleMapsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +42,15 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager.apply {
                     beginTransaction()
                         .replace(R.id.container, HistoryFragment.newInstance())
+                        .addToBackStack("")
+                        .commitAllowingStateLoss()
+                }
+                true
+            }
+            R.id.menu_google_maps -> {
+                supportFragmentManager.apply {
+                    beginTransaction()
+                        .add(R.id.container, GoogleMapsFragment())
                         .addToBackStack("")
                         .commitAllowingStateLoss()
                 }
