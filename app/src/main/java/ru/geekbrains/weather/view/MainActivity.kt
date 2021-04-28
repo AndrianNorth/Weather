@@ -4,10 +4,12 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import com.google.firebase.iid.FirebaseInstanceId
 import ru.geekbrains.weather.R
 import ru.geekbrains.weather.view.history.HistoryFragment
 import ru.geekbrains.weather.view.main.MainFragment
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("Firebase", "token "+ FirebaseInstanceId.getInstance().getToken());
         setContentView(R.layout.main_activity)
         AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO) //Добавил для себя, чтобы не выключать НР на телефоне
         registerReceiver(receiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
