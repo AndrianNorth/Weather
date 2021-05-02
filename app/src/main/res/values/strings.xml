@@ -6,4 +6,6 @@
     <string name="error">Ошибка загрузки</string>
     <string name="reload">Обновить</string>
     <string name="menu_title_history">history</string>
+    <string name="paid_version">Это платная версия</string>
+    <string name="free_version">Это бесплатная версия</string>
 </resources>

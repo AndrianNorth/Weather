@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.paid.fragment_main.*
 import ru.geekbrains.weather.R
 import ru.geekbrains.weather.databinding.FragmentMainBinding
 import ru.geekbrains.weather.model.Weather
